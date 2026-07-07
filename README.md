@@ -99,7 +99,7 @@ pip install hazm  # Persian NLP library
 
 ## 👤 Author
 
-[Your Name]
+@Baaabaei
 
 ## 📄 License
 
