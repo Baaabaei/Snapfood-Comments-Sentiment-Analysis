@@ -1,110 +1,180 @@
+Here is a complete and enhanced `README.md` for your Snapfood Sentiment Analysis repository, complete with placeholders for screenshots.
+
+```markdown
 # Snapfood Comments Sentiment Analysis
 
-A comparative study of three machine learning approaches for Persian sentiment analysis on Snapfood restaurant reviews.
+[![Jupyter Notebook](https://img.shields.io/badge/Jupyter-Notebook-orange?logo=jupyter)](https://github.com/Baaabaei/Snapfood-Comments-Sentiment-Analysis)
+[![Python](https://img.shields.io/badge/Python-3.8+-blue?logo=python)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+A comprehensive comparative study of three distinct machine learning approaches for Persian sentiment analysis on real-world restaurant reviews from the Snapfood platform.
+
+## 📋 Overview
+
+This project benchmarks three different methodologies—ranging from classical machine learning to modern deep learning—to classify Persian comments about food and restaurant experiences. It demonstrates how transfer learning with a pre-trained Persian BERT model significantly outperforms other approaches.
+
+**Key Research Questions:**
+- How well do classical ML methods perform on Persian text?
+- Can a simple LSTM capture semantic meaning effectively?
+- Does a pre-trained transformer model (ParsBERT) provide superior results for this low-resource language task?
 
 ## 📊 Dataset
 
-- **Source**: Snapfood Persian comments dataset
-- **Dataset Location**: Available on Kaggle
-- **Model Info**: [ParsBERT on Hugging Face](https://huggingface.co/HooshvareLab/bert-base-parsbert-uncased)
-- **Size**: 52,110 training samples, ~9,000 test samples
-- **Classes**: Binary classification (HAPPY=0, SAD=1)
-- **Balance**: ~50% for each class
+The dataset consists of user-submitted comments and ratings from the Snapfood delivery platform.
 
-## 🔍 Models Implemented
+| Feature | Description |
+| :--- | :--- |
+| **Source** | Snapfood (Iranian food delivery platform) |
+| **Availability** | Downloadable from [Kaggle](https://www.kaggle.com/) (Search: "Snapfood Comments") |
+| **Total Samples** | ~61,000 |
+| **Split** | 52,110 Training / ~9,000 Test |
+| **Classes** | Binary (HAPPY = 0, SAD = 1) |
+| **Balance** | Approximately 50% for each class |
+
+> **Note:** The dataset is not included in this repository. You must download it separately from Kaggle and update the file paths in the notebook.
+
+## 🧠 Models Implemented
+
+The project implements and compares three models, from simple to complex:
 
 ### 1. TF-IDF + Logistic Regression
-- **Preprocessing**: hazm library for Persian stopwords removal
-- **Vectorization**: TF-IDF with custom preprocessing pipeline
-- **Model**: Logistic Regression (max_iter=1000)
-- **Results**:
-  - Accuracy: 81.92%
-  - Precision: 80.18%
-  - Recall: 85.13%
+A classical Natural Language Processing (NLP) pipeline.
+
+- **Preprocessing:** Persian stopword removal using the `hazm` library.
+- **Vectorization:** TF-IDF (Term Frequency-Inverse Document Frequency).
+- **Classifier:** Logistic Regression.
+- **Result:** Provides a strong, fast, and interpretable baseline.
 
 ### 2. RNN (LSTM)
-- **Architecture**: 
-  - Embedding layer (10,000 words, 50 dimensions)
-  - LSTM layer (32 units)
-  - Dense layer (32 units, ReLU)
-  - Output layer (1 unit, sigmoid)
-- **Training**: 10 epochs, batch size 32
-- **Results**:
-  - Accuracy: 81.77%
-  - Precision: 81.73%
-  - Recall: 82.14%
+A simple Recurrent Neural Network using an LSTM (Long Short-Term Memory) layer to capture sequence information.
+
+- **Architecture:** Embedding Layer → LSTM (32 units) → Dense (32, ReLU) → Output (Sigmoid).
+- **Training:** 10 epochs with a batch size of 32.
+- **Result:** Balanced performance, capturing more context than TF-IDF but limited by data size.
 
 ### 3. ParsBERT (Pre-trained Transformer)
-- **Model**: HooshvareLab/bert-base-parsbert-uncased
-- **Fine-tuning**: 3 epochs, batch size 16
-- **Best Performance**:
-  - Accuracy: **86.94%** ✨
-  - Precision: 85.57%
-  - Recall: 89.07%
+A fine-tuned version of the state-of-the-art ParsBERT model, specifically pre-trained on a large Persian corpus.
+
+- **Model:** `HooshvareLab/bert-base-parsbert-uncased` from Hugging Face.
+- **Fine-tuning:** 3 epochs with a batch size of 16.
+- **Result:** Achieves the best performance, demonstrating the power of transfer learning.
 
 ## 🚀 Getting Started
 
+Follow these instructions to run the project locally.
+
 ### Prerequisites
+
+Create a virtual environment and install the required libraries:
+
 ```bash
 pip install pandas numpy scikit-learn
 pip install tensorflow keras
 pip install transformers torch
-pip install hazm  # Persian NLP library
+pip install hazm  # For Persian text processing
 ```
 
-### Running the Notebook
+### Running the Jupyter Notebook
 
-1. Clone the repository
-2. Download the Snapfood dataset from [Kaggle](https://www.kaggle.com/)
-3. Update file paths in the notebook
-4. Run cells sequentially
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/Baaabaei/Snapfood-Comments-Sentiment-Analysis.git
+    cd Snapfood-Comments-Sentiment-Analysis
+    ```
 
-## 📈 Model Comparison
+2.  **Download the Dataset:**
+    - Download the `snapfood_comments.csv` file from Kaggle.
+    - Place it in the project root directory.
 
-| Model | Accuracy | Precision | Recall | Training Time |
-|-------|----------|-----------|--------|---------------|
-| TF-IDF + LR | 81.92% | 80.18% | 85.13% | Fast |
-| LSTM | 81.77% | 81.73% | 82.14% | Moderate |
-| **ParsBERT** | **86.94%** | **85.57%** | **89.07%** | Slow |
+3.  **Update File Paths:**
+    - Open the notebook `snapfood-comments-r-rnn-bert(1).ipynb`.
+    - Locate the cell where the dataset is loaded and update the file path to point to your downloaded CSV file.
 
-## 🔧 Key Features
+4.  **Run the Notebook:**
+    - Execute the cells sequentially. For deep learning models, using a GPU runtime (e.g., on Kaggle or Google Colab) is recommended to speed up training.
 
-- **Persian Language Support**: Proper handling of Persian text with hazm library
-- **Multiple Approaches**: Classical ML, Deep Learning, and Transfer Learning
-- **Comprehensive Evaluation**: Accuracy, Precision, Recall, and Confusion Matrix
-- **Visualization**: Confusion matrices with seaborn
+## 📈 Performance Comparison
 
-## 📝 Code Structure
+The table below summarizes the performance metrics for each model on the test set.
 
+| Model | Accuracy | Precision | Recall | Training Time (Relative) |
+| :--- | :--- | :--- | :--- | :--- |
+| **TF-IDF + Logistic Regression** | 81.92% | 80.18% | 85.13% | Fast |
+| **RNN (LSTM)** | 81.77% | 81.73% | 82.14% | Moderate |
+| **ParsBERT** | **86.94%** ✨ | **85.57%** | **89.07%** | Slow |
+
+## 📸 Visual Results
+
+Here are the confusion matrices for each model, visualizing their performance on the test set.
+
+> **📌 Where to Place Screenshots:**
+> 1.  Create a folder named `images` in the root directory of your repository.
+> 2.  Save the plots you generate from your notebook as image files (e.g., `.png`).
+> 3.  Place your screenshots in the `images` folder using the paths suggested below.
+
+### Confusion Matrix: TF-IDF + Logistic Regression
+![Confusion Matrix for TF-IDF Model](images/confusion_matrix_lr.png)
+*Caption: The TF-IDF model confuses the two classes, but shows a good overall performance.*
+
+### Confusion Matrix: LSTM Model
+![Confusion Matrix for LSTM Model](images/confusion_matrix_lstm.png)
+*Caption: The LSTM model shows similar performance to the logistic regression model.*
+
+### Confusion Matrix: ParsBERT Model
+![Confusion Matrix for ParsBERT Model](images/confusion_matrix_parsbert.png)
+*Caption: The fine-tuned ParsBERT model demonstrates the best performance, with significantly fewer misclassifications, especially in identifying negative (SAD) comments.*
+
+## 🏗️ Code Structure
+
+```text
+Snapfood-Comments-Sentiment-Analysis/
+├── snapfood-comments-r-rnn-bert(1).ipynb   # Main Jupyter Notebook with all experiments
+├── README.md                               # This file
+└── images/                                 # Directory for saving visual outputs (screenshots)
+    ├── confusion_matrix_lr.png
+    ├── confusion_matrix_lstm.png
+    └── confusion_matrix_parsbert.png
 ```
-├── Data Loading & EDA
-├── Preprocessing (stopwords, tokenization)
-├── Model 1: TF-IDF + Logistic Regression
-├── Model 2: RNN (LSTM)
-└── Model 3: ParsBERT Fine-tuning
-```
 
-## 🎯 Conclusions
+## 💡 Conclusions
 
-- ParsBERT significantly outperforms classical and basic deep learning approaches
-- Transfer learning with pre-trained Persian models is highly effective
-- TF-IDF baseline provides surprisingly competitive results
-- LSTM shows balanced performance between traditional and modern approaches
+- **ParsBERT is the clear winner:** The pre-trained transformer model achieves the highest accuracy (**86.94%**), proving that transfer learning is highly effective for Persian NLP tasks.
+- **Classical ML is still relevant:** The TF-IDF + Logistic Regression pipeline achieves a respectable **81.92%** accuracy, serving as a fast, resource-light baseline.
+- **Simple RNNs are data-limited:** The LSTM model did not outperform the simpler logistic regression, suggesting that for this dataset size, a deeper or more sophisticated architecture might not yield significant gains without more data or better hyperparameter tuning.
+
+## 🔮 Future Work
+
+- **Multi-class Classification:** Incorporate the rating scores (e.g., 1-5 stars) to create a more granular sentiment analysis.
+- **Aspect-Based Sentiment:** Identify sentiment towards specific aspects (e.g., food quality, delivery speed, service).
+- **Real-time Deployment:** Create a simple API or Streamlit app to deploy the best-performing ParsBERT model.
+- **Expand Dataset:** Incorporate more data from other Persian platforms to improve model robustness.
 
 ## 📚 References
 
-- [ParsBERT](https://github.com/hooshvare/parsbert)
-- [Hazm - Persian NLP](https://github.com/sobhe/hazm)
-- [Transformers by Hugging Face](https://huggingface.co/transformers/)
+- [ParsBERT: Transformer-based Model for Persian Language](https://huggingface.co/HooshvareLab/bert-base-parsbert-uncased)
+- [Hazm: Persian NLP Library](https://github.com/sobhe/hazm)
+- [Hugging Face Transformers](https://github.com/huggingface/transformers)
 
 ## 👤 Author
 
-@Baaabaei
+**Alireza Babazadeh Zarei**
+- GitHub: [@Baaabaei](https://github.com/Baaabaei)
+- LinkedIn: [inv-alizare](https://www.linkedin.com/in/inv-alizare/)
 
 ## 📄 License
 
-This project is open source and available under the MIT License.
+This project is open-source and available under the [MIT License](https://opensource.org/licenses/MIT).
 
 ---
 
-**Note**: This notebook was originally run on Kaggle with GPU acceleration for faster training of deep learning models.
+⭐ If you found this project interesting, please consider giving it a star!
+```
+
+### Instructions for Screenshots
+
+1.  **Generate Images**: Run the notebook and save the confusion matrix plots as image files. You can add a cell at the end of each model section to save the figure.
+2.  **Create Folder**: In your local repository, create an `images` folder.
+3.  **Place Files**: Put your screenshots in the `images` folder with the exact names used in the README (`confusion_matrix_lr.png`, `confusion_matrix_lstm.png`, `confusion_matrix_parsbert.png`).
+4.  **Commit and Push**: Add, commit, and push the changes to your GitHub repository.
+
+You can now copy and paste this entire markdown block into your `README.md` file. It's ready to be committed and pushed to your repository!
