@@ -1,6 +1,4 @@
-Here is a complete and enhanced `README.md` for your Snapfood Sentiment Analysis repository, complete with placeholders for screenshots.
-
-```markdown
+ 
 # Snapfood Comments Sentiment Analysis
 
 [![Jupyter Notebook](https://img.shields.io/badge/Jupyter-Notebook-orange?logo=jupyter)](https://github.com/Baaabaei/Snapfood-Comments-Sentiment-Analysis)
@@ -168,13 +166,4 @@ This project is open-source and available under the [MIT License](https://openso
 ---
 
 ⭐ If you found this project interesting, please consider giving it a star!
-```
-
-### Instructions for Screenshots
-
-1.  **Generate Images**: Run the notebook and save the confusion matrix plots as image files. You can add a cell at the end of each model section to save the figure.
-2.  **Create Folder**: In your local repository, create an `images` folder.
-3.  **Place Files**: Put your screenshots in the `images` folder with the exact names used in the README (`confusion_matrix_lr.png`, `confusion_matrix_lstm.png`, `confusion_matrix_parsbert.png`).
-4.  **Commit and Push**: Add, commit, and push the changes to your GitHub repository.
-
-You can now copy and paste this entire markdown block into your `README.md` file. It's ready to be committed and pushed to your repository!
+``` 
