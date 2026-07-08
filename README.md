@@ -1,3 +1,6 @@
+Here is a complete and enhanced `README.md` for your Snapfood Sentiment Analysis repository, complete with placeholders for screenshots.
+
+```markdown
 # Snapfood Comments Sentiment Analysis
 
 [![Jupyter Notebook](https://img.shields.io/badge/Jupyter-Notebook-orange?logo=jupyter)](https://github.com/Baaabaei/Snapfood-Comments-Sentiment-Analysis)
@@ -69,3 +72,109 @@ pip install pandas numpy scikit-learn
 pip install tensorflow keras
 pip install transformers torch
 pip install hazm  # For Persian text processing
+```
+
+### Running the Jupyter Notebook
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/Baaabaei/Snapfood-Comments-Sentiment-Analysis.git
+    cd Snapfood-Comments-Sentiment-Analysis
+    ```
+
+2.  **Download the Dataset:**
+    - Download the `snapfood_comments.csv` file from Kaggle.
+    - Place it in the project root directory.
+
+3.  **Update File Paths:**
+    - Open the notebook `snapfood-comments-r-rnn-bert(1).ipynb`.
+    - Locate the cell where the dataset is loaded and update the file path to point to your downloaded CSV file.
+
+4.  **Run the Notebook:**
+    - Execute the cells sequentially. For deep learning models, using a GPU runtime (e.g., on Kaggle or Google Colab) is recommended to speed up training.
+
+## 📈 Performance Comparison
+
+The table below summarizes the performance metrics for each model on the test set.
+
+| Model | Accuracy | Precision | Recall | Training Time (Relative) |
+| :--- | :--- | :--- | :--- | :--- |
+| **TF-IDF + Logistic Regression** | 81.92% | 80.18% | 85.13% | Fast |
+| **RNN (LSTM)** | 81.77% | 81.73% | 82.14% | Moderate |
+| **ParsBERT** | **86.94%** ✨ | **85.57%** | **89.07%** | Slow |
+
+## 📸 Visual Results
+
+Here are the confusion matrices for each model, visualizing their performance on the test set.
+
+> **📌 Where to Place Screenshots:**
+> 1.  Create a folder named `images` in the root directory of your repository.
+> 2.  Save the plots you generate from your notebook as image files (e.g., `.png`).
+> 3.  Place your screenshots in the `images` folder using the paths suggested below.
+
+### Confusion Matrix: TF-IDF + Logistic Regression
+![Confusion Matrix for TF-IDF Model](snapfood/images/TF-IDF.png)
+*Caption: The TF-IDF model confuses the two classes, but shows a good overall performance.*
+
+### Confusion Matrix: LSTM Model
+![Confusion Matrix for LSTM Model](snapfood/images/RNN.png)
+*Caption: The LSTM model shows similar performance to the logistic regression model.*
+
+### Confusion Matrix: ParsBERT Model
+![Confusion Matrix for ParsBERT Model](snapfood/images/bert.png)
+*Caption: The fine-tuned ParsBERT model demonstrates the best performance, with significantly fewer misclassifications, especially in identifying negative (SAD) comments.*
+
+## 🏗️ Code Structure
+
+```text
+Snapfood-Comments-Sentiment-Analysis/
+├── snapfood-comments-r-rnn-bert(1).ipynb   # Main Jupyter Notebook with all experiments
+├── README.md                               # This file
+└── images/                                 # Directory for saving visual outputs (screenshots)
+    ├── confusion_matrix_lr.png
+    ├── confusion_matrix_lstm.png
+    └── confusion_matrix_parsbert.png
+```
+
+## 💡 Conclusions
+
+- **ParsBERT is the clear winner:** The pre-trained transformer model achieves the highest accuracy (**86.94%**), proving that transfer learning is highly effective for Persian NLP tasks.
+- **Classical ML is still relevant:** The TF-IDF + Logistic Regression pipeline achieves a respectable **81.92%** accuracy, serving as a fast, resource-light baseline.
+- **Simple RNNs are data-limited:** The LSTM model did not outperform the simpler logistic regression, suggesting that for this dataset size, a deeper or more sophisticated architecture might not yield significant gains without more data or better hyperparameter tuning.
+
+## 🔮 Future Work
+
+- **Multi-class Classification:** Incorporate the rating scores (e.g., 1-5 stars) to create a more granular sentiment analysis.
+- **Aspect-Based Sentiment:** Identify sentiment towards specific aspects (e.g., food quality, delivery speed, service).
+- **Real-time Deployment:** Create a simple API or Streamlit app to deploy the best-performing ParsBERT model.
+- **Expand Dataset:** Incorporate more data from other Persian platforms to improve model robustness.
+
+## 📚 References
+
+- [ParsBERT: Transformer-based Model for Persian Language](https://huggingface.co/HooshvareLab/bert-base-parsbert-uncased)
+- [Hazm: Persian NLP Library](https://github.com/sobhe/hazm)
+- [Hugging Face Transformers](https://github.com/huggingface/transformers)
+
+## 👤 Author
+
+**Alireza Babazadeh Zarei**
+- GitHub: [@Baaabaei](https://github.com/Baaabaei)
+- LinkedIn: [inv-alizare](https://www.linkedin.com/in/inv-alizare/)
+
+## 📄 License
+
+This project is open-source and available under the [MIT License](https://opensource.org/licenses/MIT).
+
+---
+
+⭐ If you found this project interesting, please consider giving it a star!
+```
+
+### Instructions for Screenshots
+
+1.  **Generate Images**: Run the notebook and save the confusion matrix plots as image files. You can add a cell at the end of each model section to save the figure.
+2.  **Create Folder**: In your local repository, create an `images` folder.
+3.  **Place Files**: Put your screenshots in the `images` folder with the exact names used in the README (`confusion_matrix_lr.png`, `confusion_matrix_lstm.png`, `confusion_matrix_parsbert.png`).
+4.  **Commit and Push**: Add, commit, and push the changes to your GitHub repository.
+
+You can now copy and paste this entire markdown block into your `README.md` file. It's ready to be committed and pushed to your repository!
