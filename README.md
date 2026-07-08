@@ -104,22 +104,17 @@ The table below summarizes the performance metrics for each model on the test se
 ## 📸 Visual Results
 
 Here are the confusion matrices for each model, visualizing their performance on the test set.
-
-> **📌 Where to Place Screenshots:**
-> 1.  Create a folder named `images` in the root directory of your repository.
-> 2.  Save the plots you generate from your notebook as image files (e.g., `.png`).
-> 3.  Place your screenshots in the `images` folder using the paths suggested below.
-
+ 
 ### Confusion Matrix: TF-IDF + Logistic Regression
-![Confusion Matrix for TF-IDF Model](snapfood/images/TF-IDF.png)
+![Confusion Matrix for TF-IDF Model](snappfood/images/TF-IDF.png)
 *Caption: The TF-IDF model confuses the two classes, but shows a good overall performance.*
 
 ### Confusion Matrix: LSTM Model
-![Confusion Matrix for LSTM Model](snapfood/images/RNN.png)
+![Confusion Matrix for LSTM Model](snappfood/images/RNN.png)
 *Caption: The LSTM model shows similar performance to the logistic regression model.*
 
 ### Confusion Matrix: ParsBERT Model
-![Confusion Matrix for ParsBERT Model](snapfood/images/bert.png)
+![Confusion Matrix for ParsBERT Model](snappfood/images/bert.png)
 *Caption: The fine-tuned ParsBERT model demonstrates the best performance, with significantly fewer misclassifications, especially in identifying negative (SAD) comments.*
 
 ## 🏗️ Code Structure
